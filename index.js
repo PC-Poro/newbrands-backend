@@ -25,19 +25,19 @@ app.listen(PORT, function () {
 });
 
 app.post("/contact", function (req, res) {
-  console.log(req.body);
-  connection.collection("contact").insertOne(req.body, function (err, res) {
+  connection.collection("contact").insertOne(req.body, function (err, rest) {
     if (err) throw err;
-    console.log(res);
+    res.send({ status : true })
     connection.close();
   });
+  res.status(200);
 });
 
 app.post("/newsletter", function (req, res) {
   console.log(req.body);
-  connection.collection("newsletter").insertOne(req.body, function (err, res) {
+  connection.collection("newsletter").insertOne(req.body, function (err, rest) {
     if (err) throw err;
-    console.log(res);
+    res.send({ status : true })
     connection.close();
   });
 });
